@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QWindow>
 
+#include "ac3.h"
 
 namespace Ui {
 class process_handler;
@@ -17,6 +18,12 @@ class process_handler : public QWidget
 public:
     explicit process_handler(QWidget *parent = nullptr);
     ~process_handler();
+
+signals:
+    void ph_closed( );
+
+protected:
+    void closeEvent(QCloseEvent *event);
 
 private:
     Ui::process_handler *ui;

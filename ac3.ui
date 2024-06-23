@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>ac3</string>
+   <string>ac trainer by sixbreaker</string>
   </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
@@ -20,6 +20,9 @@
    <bool>false</bool>
   </property>
   <property name="is_attached" stdset="0">
+   <bool>false</bool>
+  </property>
+  <property name="is_proc_window" stdset="0">
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -65,15 +68,18 @@
     <property name="lineWidth">
      <number>1</number>
     </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
     <property name="widgetResizable">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <widget class="QWidget" name="scrollAreaWidgetContents">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>469</width>
+       <width>455</width>
        <height>79</height>
       </rect>
      </property>

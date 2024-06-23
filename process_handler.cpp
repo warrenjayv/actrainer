@@ -13,3 +13,8 @@ process_handler::~process_handler()
 {
     delete ui;
 }
+
+void process_handler::closeEvent(QCloseEvent *event )
+{
+    emit ph_closed( );
+}

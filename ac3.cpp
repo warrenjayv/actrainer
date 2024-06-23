@@ -7,7 +7,7 @@ ac3::ac3(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->sliderA, &QSlider::sliderMoved, this, &ac3::attach_process);
-    update_console(get_time( ) + "  " + "AC trainer by SIX © ");
+    update_console(get_time( ) + "  " + "AC trainer by six © ");
 
 }
 
@@ -18,12 +18,39 @@ ac3::~ac3()
 
 void ac3::attach_process( )
 {
+    // assert if proc window is open
+    if (this->property("is_proc_window") == true)
+    {
+        return;
+    }
+
+    // assert slider value
+    if (ui->sliderA->value() == 1)
+    {
+        this->setProperty("is_proc_window", false);
+        return;
+    }
+
     // update console
     update_console(get_time( ) + "  attaching to process...");
 
     // initialize process handler
     process_handler *_ph = new process_handler( );
     _ph->show( );
+
+    // is_proc_window to true
+    this->setProperty("is_proc_window", true);
+
+    // connect signal
+    connect(_ph, &process_handler::ph_closed, this, &ac3::reset_proc_window);
+
+
+}
+
+void ac3::reset_proc_window( )
+{
+    this->setProperty("is_proc_window", false);
+    ui->sliderA->setSliderPosition(0);
 
 
 }
