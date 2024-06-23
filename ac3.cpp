@@ -8,7 +8,7 @@ ac3::ac3(QWidget *parent)
     ui->setupUi(this);
     connect(ui->sliderA, &QSlider::sliderMoved, this, &ac3::attach_process);
 
-    update_console(get_time( ) + " AC trainer by SIX © ");
+    update_console(get_time( ) + "   " + "AC trainer by SIX © ");
 
 }
 
@@ -32,6 +32,16 @@ void ac3::update_console( QString msg )
 QString ac3::get_time ( )
 {
     auto now = std::chrono::system_clock::now( );
+
     std::time_t cut = std::chrono::system_clock::to_time_t(now);
-    return QString::fromStdString(std::ctime(&cut));
+    int h = ( cut / 360 ) % 24;
+    std::string hs = std::to_string(h);
+    int m = ( cut / 60  ) % 60;
+    std::string ms = std::to_string(m);
+    int s = ( cut % 60  );
+    std::string ss = std::to_string(s);
+
+    return QString::fromStdString(hs + ":" + ms + ":" + ss);
+
+    // return QString::fromStdString(std::ctime(&cut));
 }

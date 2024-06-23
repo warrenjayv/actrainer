@@ -4,10 +4,6 @@
 #include <QMainWindow>
 #include <QSlider>
 
-#include <iostream>
-#include <chrono>
-#include <ctime>
-
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class ac3;
