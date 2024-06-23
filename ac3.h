@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QSlider>
 
+#include "process_handler.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class ac3;
@@ -17,6 +19,9 @@ class ac3 : public QMainWindow
 public:
     ac3(QWidget *parent = nullptr);
     ~ac3();
+
+signals:
+    void set_process( );
 
 public slots:
     void attach_process ( );

@@ -7,8 +7,7 @@ ac3::ac3(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->sliderA, &QSlider::sliderMoved, this, &ac3::attach_process);
-
-    update_console(get_time( ) + "   " + "AC trainer by SIX © ");
+    update_console(get_time( ) + "  " + "AC trainer by SIX © ");
 
 }
 
@@ -19,6 +18,13 @@ ac3::~ac3()
 
 void ac3::attach_process( )
 {
+    // update console
+    update_console(get_time( ) + "  attaching to process...");
+
+    // initialize process handler
+    process_handler *_ph = new process_handler( );
+    _ph->show( );
+
 
 }
 
