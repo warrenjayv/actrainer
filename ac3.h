@@ -2,6 +2,11 @@
 #define AC3_H
 
 #include <QMainWindow>
+#include <QSlider>
+
+#include <iostream>
+#include <chrono>
+#include <ctime>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,10 +22,15 @@ public:
     ac3(QWidget *parent = nullptr);
     ~ac3();
 
+public slots:
+    void attach_process ( );
+
 protected:
-    void open_process( );
+    void update_console ( QString msg );
+    QString get_time    ( );
 
 private:
     Ui::ac3 *ui;
+    QString csl_msg = ""; // console message
 };
 #endif // AC3_H
