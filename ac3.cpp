@@ -33,6 +33,28 @@ void ac3::attach_process( )
 
     // update console
     update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+    update_console(get_time( ) + "  attaching to process...");
+
+
 
     // initialize process handler
     process_handler *_ph = new process_handler( );
@@ -59,7 +81,10 @@ void ac3::update_console( QString msg )
 {
     csl_msg += msg + "\n";
 
-    ui->console_LBL->setText(csl_msg);
+    //ui->console_LBL->setText(csl_msg);
+
+    ui->listWidget->addItem(msg);
+
 }
 
 QString ac3::get_time ( )
