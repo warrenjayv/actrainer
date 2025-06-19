@@ -11,15 +11,18 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     ac3.cpp \
-    process_handler.cpp
+    process_handler.cpp \
+    sonar.cpp
 
 HEADERS += \
     ac3.h \
-    process_handler.h
+    process_handler.h \
+    sonar.h
 
 FORMS += \
     ac3.ui \
-    process_handler.ui
+    process_handler.ui \
+    sonar.ui
 
 TRANSLATIONS += \
     ac3_trainer_en_US.ts

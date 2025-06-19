@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>snrWGT</class>
+ <widget class="QWidget" name="snrWGT">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>sonar</string>
+  </property>
+  <property name="windowOpacity">
+   <double>0.950000000000000</double>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(24, 6, 4);</string>
+  </property>
+  <widget class="QOpenGLWidget" name="snrOPENGL">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>11</y>
+     <width>621</width>
+     <height>111</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

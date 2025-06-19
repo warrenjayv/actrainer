@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>process selector</string>
   </property>
+  <property name="windowOpacity">
+   <double>0.950000000000000</double>
+  </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(24, 6, 4);</string>
   </property>

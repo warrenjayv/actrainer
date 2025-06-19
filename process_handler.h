@@ -5,8 +5,6 @@
 #include <QWidget>
 #include <QWindow>
 
-#include "ac3.h"
-
 namespace Ui {
 class process_handler;
 }

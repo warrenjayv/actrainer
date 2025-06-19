@@ -9,6 +9,8 @@ ac3::ac3(QWidget *parent)
     connect(ui->sliderA, &QSlider::sliderMoved, this, &ac3::attach_process);
     update_console(get_time( ) + "  " + "AC trainer by six © ");
 
+    ph = new process_handler( );
+
 }
 
 ac3::~ac3()
@@ -33,38 +35,17 @@ void ac3::attach_process( )
 
     // update console
     update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-    update_console(get_time( ) + "  attaching to process...");
-
 
 
     // initialize process handler
-    process_handler *_ph = new process_handler( );
-    _ph->show( );
+    //process_handler *_ph = new process_handler( );
+    ph->show( );
 
     // is_proc_window to true
     this->setProperty("is_proc_window", true);
 
     // connect signal
-    connect(_ph, &process_handler::ph_closed, this, &ac3::reset_proc_window);
+    connect(ph, &process_handler::ph_closed, this, &ac3::reset_proc_window);
 
 
 }
