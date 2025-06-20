@@ -15,6 +15,8 @@ SOURCES += \
     sonar.cpp
 
 HEADERS += \
+    ../../../../../Program Files (x86)/msys64/home/six/projects/luna.systems.external/six/dinput/utilities/util-writer.h \
+    ../../../../../Program Files (x86)/msys64/home/six/projects/luna.systems.external/six/dinput/utilities/util-writer.h \
     ac3.h \
     process_handler.h \
     sonar.h

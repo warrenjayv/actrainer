@@ -1,5 +1,4 @@
 #include "process_handler.h"
-#include "ui_ac3.h"
 #include "ui_process_handler.h"
 
 process_handler::process_handler(QWidget *parent)
@@ -7,7 +6,10 @@ process_handler::process_handler(QWidget *parent)
     , ui(new Ui::process_handler)
 {
     ui->setupUi(this);
+
     list_processes( );
+
+    connect( ui->pushButton, &QPushButton::clicked, this, &process_handler::list_processes);
 }
 
 process_handler::~process_handler()
@@ -23,5 +25,18 @@ void process_handler::closeEvent(QCloseEvent *event )
 
 void process_handler::list_processes( )
 {
-    ui->processLIST->insertItem( ui->processLIST->currentRow(), new QListWidgetItem(tr("whatever"), ui->processLIST ));
+    // ui->processLIST->insertItem( ui->processLIST->currentRow(), new QListWidgetItem(tr("whatever"), ui->processLIST ));
+    emit send_console( "obtaining processes list");
 }
+
+void process_handler::get_processes( )
+{
+    DWORD _procids[1024];
+    DWORD _cbn;
+
+    if(!EnumProcesses(_procids, sizeof(_procids), &_cbn))
+    {
+
+    }
+}
+

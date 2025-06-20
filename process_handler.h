@@ -5,6 +5,9 @@
 #include <QWidget>
 #include <QWindow>
 
+#include <windows.h>
+#include <psapi.h>
+
 namespace Ui {
 class process_handler;
 }
@@ -19,9 +22,11 @@ public:
 
 signals:
     void ph_closed( );
+    void send_console( QString msg );
 
 public slots:
     void list_processes( );
+    void get_processes ( );
 protected:
     void closeEvent(QCloseEvent *event);
 

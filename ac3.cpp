@@ -6,11 +6,14 @@ ac3::ac3(QWidget *parent)
     , ui(new Ui::ac3)
 {
     ui->setupUi(this);
+
     connect(ui->sliderA, &QSlider::sliderMoved, this, &ac3::attach_process);
+    connect(this, &ac3::send_console, this, &ac3::update_console );
+
     update_console(get_time( ) + "  " + "AC trainer by six © ");
 
-    ph = new process_handler( );
-
+    ph = new process_handler( parent );
+    connect(ph, &process_handler::send_console, this, &ac3::send_console);
 }
 
 ac3::~ac3()
@@ -34,7 +37,7 @@ void ac3::attach_process( )
     }
 
     // update console
-    update_console(get_time( ) + " attaching to process...");
+    update_console("attaching to process...");
 
     // initialize process handler
     //process_handler *_ph = new process_handler( );
@@ -58,11 +61,9 @@ void ac3::reset_proc_window( )
 
 void ac3::update_console( QString msg )
 {
-    csl_msg += msg + "\n";
+    QString csl_msg = get_time( ) + " " + msg + "\n";
 
-    //ui->console_LBL->setText(csl_msg);
-
-    ui->listWidget->addItem(msg);
+    ui->listWidget->addItem(csl_msg);
 
 }
 

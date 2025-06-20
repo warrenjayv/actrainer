@@ -27,14 +27,15 @@ public:
 
 signals:
     void set_process     ( );
+    void send_console    ( QString msg );
 
 public slots:
     void attach_process    ( );
     void reset_proc_window ( );
+    void update_console ( QString msg );
 
 
 protected:
-    void update_console ( QString msg );
     QString get_time    ( );
 
 private:
