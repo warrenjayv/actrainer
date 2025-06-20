@@ -7,7 +7,7 @@ process_handler::process_handler(QWidget *parent)
     , ui(new Ui::process_handler)
 {
     ui->setupUi(this);
-
+    list_processes( );
 }
 
 process_handler::~process_handler()
@@ -19,4 +19,9 @@ void process_handler::closeEvent(QCloseEvent *event )
 {
     this->hide();
     emit ph_closed( );
+}
+
+void process_handler::list_processes( )
+{
+    ui->processLIST->insertItem( ui->processLIST->currentRow(), new QListWidgetItem(tr("whatever"), ui->processLIST ));
 }

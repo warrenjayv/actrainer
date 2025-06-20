@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>491</width>
-    <height>360</height>
+    <height>461</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -52,7 +52,7 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>320</y>
+      <y>430</y>
       <width>31</width>
       <height>21</height>
      </rect>
@@ -85,7 +85,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>320</y>
+      <y>430</y>
       <width>51</width>
       <height>21</height>
      </rect>
@@ -109,7 +109,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>320</y>
+      <y>430</y>
       <width>21</width>
       <height>16</height>
      </rect>
@@ -134,53 +134,23 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>150</y>
-      <width>461</width>
-      <height>151</height>
+      <y>120</y>
+      <width>471</width>
+      <height>261</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="console_LBL">
+   <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>120</y>
-      <width>461</width>
-      <height>21</height>
+      <y>390</y>
+      <width>471</width>
+      <height>31</height>
      </rect>
     </property>
-    <property name="maximumSize">
-     <size>
-      <width>16777213</width>
-      <height>16777215</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Times New Roman</family>
-      <pointsize>9</pointsize>
-      <fontweight>Light</fontweight>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(12, 0, 0);
-border-color: rgb(27, 15, 15);
-color: rgb(135, 100, 98);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Box</enum>
-    </property>
-    <property name="text">
-     <string>console</string>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::PlainText</enum>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-    </property>
-    <property name="wordWrap">
-     <bool>true</bool>
+    <property name="placeholderText">
+     <string>console...</string>
     </property>
    </widget>
   </widget>

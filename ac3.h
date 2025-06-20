@@ -4,7 +4,8 @@
 #include <QMainWindow>
 #include <QSlider>
 
-#include "process_handler.h";
+#include "process_handler.h"
+#include "sonar.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -22,6 +23,7 @@ public:
     ~ac3();
 
     process_handler *ph = nullptr;
+    //sonar          *snr = nullptr;
 
 signals:
     void set_process     ( );

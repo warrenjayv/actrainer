@@ -20,6 +20,8 @@ public:
 signals:
     void ph_closed( );
 
+public slots:
+    void list_processes( );
 protected:
     void closeEvent(QCloseEvent *event);
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>401</width>
-    <height>424</height>
+    <width>211</width>
+    <height>425</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,15 +35,51 @@
     <string>process selector</string>
    </property>
   </widget>
-  <widget class="QListWidget" name="processLIST">
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>146</x>
+     <y>390</y>
+     <width>51</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>attach</string>
+   </property>
+  </widget>
+  <widget class="QScrollArea" name="scrollArea">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>40</y>
-     <width>261</width>
-     <height>371</height>
+     <width>191</width>
+     <height>341</height>
     </rect>
    </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>189</width>
+      <height>339</height>
+     </rect>
+    </property>
+    <widget class="QListWidget" name="processLIST">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>191</width>
+       <height>341</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
   </widget>
  </widget>
  <resources/>

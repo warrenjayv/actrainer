@@ -34,8 +34,7 @@ void ac3::attach_process( )
     }
 
     // update console
-    update_console(get_time( ) + "  attaching to process...");
-
+    update_console(get_time( ) + " attaching to process...");
 
     // initialize process handler
     //process_handler *_ph = new process_handler( );
@@ -44,7 +43,7 @@ void ac3::attach_process( )
     // is_proc_window to true
     this->setProperty("is_proc_window", true);
 
-    // connect signal
+    // connect signal close window
     connect(ph, &process_handler::ph_closed, this, &ac3::reset_proc_window);
 
 
@@ -54,7 +53,6 @@ void ac3::reset_proc_window( )
 {
     this->setProperty("is_proc_window", false);
     ui->sliderA->setSliderPosition(0);
-
 
 }
 
