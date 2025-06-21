@@ -63,8 +63,12 @@ void ac3::update_console( QString msg )
 {
     QString csl_msg = get_time( ) + " " + msg + "\n";
 
-    ui->listWidget->addItem(csl_msg);
-
+    QListWidgetItem *_lW = new QListWidgetItem(csl_msg, ui->listWidget );
+    // QListWidgetItem *_lW = ui->listWidget->currentItem();
+    QSize sz = _lW->sizeHint();
+    QSize nz(sz.width(), sz.height());
+    _lW->setSizeHint(nz);
+    ui->listWidget->addItem(_lW);
 }
 
 QString ac3::get_time ( )

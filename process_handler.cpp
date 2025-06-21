@@ -19,14 +19,14 @@ process_handler::~process_handler()
 
 void process_handler::closeEvent(QCloseEvent *event )
 {
-    this->hide();
+    this->hide( );
     emit ph_closed( );
 }
 
 void process_handler::list_processes( )
 {
     // ui->processLIST->insertItem( ui->processLIST->currentRow(), new QListWidgetItem(tr("whatever"), ui->processLIST ));
-    emit send_console( "obtaining processes list");
+    emit send_console( "obtaining processes list" );
 }
 
 void process_handler::get_processes( )
