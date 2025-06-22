@@ -7,6 +7,7 @@
 
 #include <windows.h>
 #include <psapi.h>
+#include <winnt.h>
 
 namespace Ui {
 class process_handler;

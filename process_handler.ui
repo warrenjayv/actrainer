@@ -35,7 +35,7 @@
     <string>process selector</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="attachBTN">
    <property name="geometry">
     <rect>
      <x>146</x>
@@ -52,9 +52,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>40</y>
+     <y>50</y>
      <width>191</width>
-     <height>341</height>
+     <height>331</height>
     </rect>
    </property>
    <property name="widgetResizable">
@@ -66,7 +66,7 @@
       <x>0</x>
       <y>0</y>
       <width>189</width>
-      <height>339</height>
+      <height>329</height>
      </rect>
     </property>
     <widget class="QListWidget" name="processLIST">
@@ -80,6 +80,22 @@
      </property>
     </widget>
    </widget>
+  </widget>
+  <widget class="QPushButton" name="refreshBTN">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>10</y>
+     <width>34</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Я</string>
+   </property>
+   <property name="icon">
+    <iconset theme="application-exit"/>
+   </property>
   </widget>
  </widget>
  <resources/>
