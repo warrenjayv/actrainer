@@ -40,4 +40,6 @@ std::string piper::command(char* cmd)
         _out.append(_buffer, _bytes_read);
     }
 
+    return _out;
+
 }

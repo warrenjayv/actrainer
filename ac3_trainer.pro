@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    err.cpp \
     main.cpp \
     ac3.cpp \
     piper.cpp \
@@ -19,6 +20,7 @@ HEADERS += \
     ../../../../../Program Files (x86)/msys64/home/six/projects/luna.systems.external/six/dinput/utilities/util-writer.h \
     ../../../../../Program Files (x86)/msys64/home/six/projects/luna.systems.external/six/dinput/utilities/util-writer.h \
     ac3.h \
+    err.h \
     piper.h \
     process_handler.h \
     sonar.h
