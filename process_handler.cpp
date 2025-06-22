@@ -27,9 +27,10 @@ void process_handler::list_processes( )
 {
     // ui->processLIST->insertItem( ui->processLIST->currentRow(), new QListWidgetItem(tr("whatever"), ui->processLIST ));
      emit send_console( "• obtaining processes list" );
+
 }
 
-void process_handler::get_processes( )
+void process_handler::get_process_modules( )
 {
     DWORD _procids[1024];
     DWORD _cbn;
@@ -56,9 +57,11 @@ void process_handler::get_processes( )
                 if (! EnumProcessModules(_hproc, &_hmod, sizeof(_hmod), &_cmod))
                 {
                     int _s = GetModuleBaseNameA(_hproc, _hmod, (LPSTR) &_name, sizeof(_name) );
+
                     if (_s > 0)
                     {
                         QString _qs = QString::fromLocal8Bit(_name);
+                        ui->processLIST->addItem(_qs);
                     }
 
                 }

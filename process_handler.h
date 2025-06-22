@@ -26,8 +26,8 @@ signals:
     void send_console( QString msg );
 
 public slots:
-    void list_processes( );
-    void get_processes ( );
+    void list_processes      ( );
+    void get_process_modules ( );
 protected:
     void closeEvent(QCloseEvent *event);
 
