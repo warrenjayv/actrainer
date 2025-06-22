@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     ac3.cpp \
+    piper.cpp \
     process_handler.cpp \
     sonar.cpp
 
@@ -18,11 +19,13 @@ HEADERS += \
     ../../../../../Program Files (x86)/msys64/home/six/projects/luna.systems.external/six/dinput/utilities/util-writer.h \
     ../../../../../Program Files (x86)/msys64/home/six/projects/luna.systems.external/six/dinput/utilities/util-writer.h \
     ac3.h \
+    piper.h \
     process_handler.h \
     sonar.h
 
 FORMS += \
     ac3.ui \
+    err.ui \
     process_handler.ui \
     sonar.ui
 

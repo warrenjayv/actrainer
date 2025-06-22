@@ -25,8 +25,9 @@ void process_handler::closeEvent(QCloseEvent *event )
 
 void process_handler::list_processes( )
 {
-    // ui->processLIST->insertItem( ui->processLIST->currentRow(), new QListWidgetItem(tr("whatever"), ui->processLIST ));
-     emit send_console( "• obtaining processes list" );
+
+    emit send_console( "• obtaining processes list" );
+
 
 }
 
