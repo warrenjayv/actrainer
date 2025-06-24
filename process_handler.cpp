@@ -25,10 +25,7 @@ void process_handler::closeEvent(QCloseEvent *event )
 
 void process_handler::list_processes( )
 {
-
     emit send_console( "• obtaining processes list" );
-
-
 }
 
 void process_handler::get_process_modules( )

@@ -5,6 +5,7 @@
 #include <QSlider>
 
 #include "process_handler.h"
+#include "err.h"
 #include "sonar.h"
 
 QT_BEGIN_NAMESPACE
@@ -23,11 +24,13 @@ public:
     ~ac3();
 
     process_handler *ph = nullptr;
+    errs            *er = nullptr;
     //sonar          *snr = nullptr;
 
 signals:
     void set_process     ( );
     void send_console    ( QString msg );
+    void send_report     ( QString msg );
 
 public slots:
     void attach_process    ( );

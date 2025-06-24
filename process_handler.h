@@ -24,6 +24,7 @@ public:
 signals:
     void ph_closed( );
     void send_console( QString msg );
+    void send_report ( QString msg );
 
 public slots:
     void list_processes      ( );

@@ -14,6 +14,11 @@ ac3::ac3(QWidget *parent)
 
     ph = new process_handler( parent );
     connect(ph, &process_handler::send_console, this, &ac3::send_console);
+
+    er = new errs( parent, "");
+    connect(this, &ac3::send_report, er, &errs::report);
+    connect( ph, &process_handler::send_report, er, &errs::report);
+
 }
 
 ac3::~ac3()
