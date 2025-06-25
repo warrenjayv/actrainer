@@ -63,7 +63,7 @@ std::string piper::command(char* cmd)
 
     CloseHandle(_wpipe);
 
-    char  _buffer[8064];
+    char  _buffer[PIPER_MAX];
     DWORD _bytes_read = 0;
 
     std::string _out = "";
@@ -71,7 +71,7 @@ std::string piper::command(char* cmd)
     while(ReadFile(_rpipe, &_buffer, sizeof(_buffer), &_bytes_read, NULL) && _bytes_read > 0)
     {
         DWORD error = GetLastError();
-        if (error = ERROR_BROKEN_PIPE)
+        if (error == ERROR_BROKEN_PIPE)
         {
             return "ERROR - broken pipe";
             break;
@@ -89,3 +89,26 @@ std::string piper::command(char* cmd)
     return _out;
 
 }
+
+std::string piper::commandA(char* cmd)
+{
+    FILE *_pip = popen(cmd, "r");
+    if (!_pip)
+    {
+        return "ERROR : popen failed";
+    }
+
+    char buffer[1024];
+
+    std::string result = "";
+
+    while(fgets(buffer, sizeof(buffer), _pip) != nullptr)
+    {
+        result += buffer;
+    }
+
+    pclose(_pip);
+    return result;
+}
+
+

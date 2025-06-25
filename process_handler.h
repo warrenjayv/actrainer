@@ -30,6 +30,7 @@ signals:
 
 public slots:
     void list_processes      ( );
+    void list_processesA     ( );
     void get_process_modules ( );
 protected:
     void closeEvent(QCloseEvent *event);
