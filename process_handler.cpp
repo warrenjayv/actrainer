@@ -26,6 +26,18 @@ void process_handler::closeEvent(QCloseEvent *event )
 void process_handler::list_processes( )
 {
     emit send_console( "• obtaining processes list" );
+
+    // QString _list = tr(piper::command("tasklist").c_str());
+    std::string _list = piper::command("tasklist");
+    size_t _sz = _list.find("ERROR");
+    if ( _sz > 0 )
+    {
+        DWORD _err = GetLastError();
+        qInfo("list processes: %x", _err);
+        return;
+    }
+
+    qInfo("command: %s", _list.c_str());
 }
 
 void process_handler::get_process_modules( )

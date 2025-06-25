@@ -2,9 +2,36 @@
 
 piper::piper() {}
 
+wchar_t * piper::chartowchar_t( char* cmd)
+{
+    int _sz = MultiByteToWideChar(CP_ACP, 0, cmd, -1, NULL, 0);
+    if (_sz == 0)
+    {
+        return nullptr;
+    }
+
+    wchar_t* _ws = new wchar_t[_sz];
+
+    int _cc = MultiByteToWideChar(CP_ACP, 0, cmd, -1, _ws, _sz);
+
+    if ( _cc == 0 )
+    {
+        delete[] _ws;
+        return nullptr;
+    }
+
+
+    return _ws;
+}
+
 std::string piper::command(char* cmd)
 {
-    wchar_t* _ws = new wchar_t[strlen(cmd)+ 1];
+    wchar_t* _ws = piper::chartowchar_t(cmd);
+
+    if (_ws == NULL)
+    {
+        return "ERROR - invalid command";
+    }
 
     HANDLE _rpipe = NULL;
     HANDLE _wpipe = NULL;
@@ -16,19 +43,25 @@ std::string piper::command(char* cmd)
         return "ERROR - failed to create pipe";
     }
 
-    STARTUPINFO _si = { 0 };
+    STARTUPINFO _si;
+    ZeroMemory(&_si, sizeof(_si));
 
+    _si.cb        = sizeof(_si);
     _si.hStdInput = _wpipe;
     _si.dwFlags   = STARTF_USESTDHANDLES;
+    _si.hStdError = _wpipe;
 
-    PROCESS_INFORMATION _pi = { 0 };
+    PROCESS_INFORMATION _pi;
+    ZeroMemory(&_pi, sizeof(_pi));
 
     if (! CreateProcess( NULL, _ws, NULL, NULL, TRUE, 0, NULL, NULL, &_si, &_pi ))
     {
-        return "ERROR - failed to create process";
+        CloseHandle(_wpipe);
+        CloseHandle(_rpipe);
+        return "ERROR - failed to create process ";
     }
 
-    WaitForSingleObject(_pi.hProcess, INFINITE);
+    CloseHandle(_wpipe);
 
     char  _buffer[1024];
     DWORD _bytes_read = 0;
@@ -39,6 +72,12 @@ std::string piper::command(char* cmd)
     {
         _out.append(_buffer, _bytes_read);
     }
+
+    WaitForSingleObject(_pi.hProcess, INFINITE);
+
+    CloseHandle(_pi.hProcess);
+    CloseHandle(_pi.hThread);
+    CloseHandle(_rpipe);
 
     return _out;
 

@@ -9,6 +9,8 @@
 #include <psapi.h>
 #include <winnt.h>
 
+#include "piper.h"
+
 namespace Ui {
 class process_handler;
 }

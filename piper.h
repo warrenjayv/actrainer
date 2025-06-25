@@ -10,7 +10,8 @@ class piper
 public:
     piper();
 
-    static std::string command( char* cmd );
+    static std::string command   ( char* cmd);
+    static wchar_t *chartowchar_t( char* cmd);
 };
 
 #endif // PIPER_H
