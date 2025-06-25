@@ -29,11 +29,12 @@ void process_handler::list_processes( )
 
     // QString _list = tr(piper::command("tasklist").c_str());
     std::string _list = piper::command("tasklist");
+    qInfo("list processes: %s", _list.c_str());
     size_t _sz = _list.find("ERROR");
-    if ( _sz > 0 )
+    if ( _sz != std::string::npos )
     {
         DWORD _err = GetLastError();
-        qInfo("list processes: %x", _err);
+        qInfo("list processes: %lx<error>\n%s", _err, _list.c_str());
         return;
     }
 

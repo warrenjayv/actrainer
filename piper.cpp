@@ -63,14 +63,21 @@ std::string piper::command(char* cmd)
 
     CloseHandle(_wpipe);
 
-    char  _buffer[1024];
+    char  _buffer[8064];
     DWORD _bytes_read = 0;
 
     std::string _out = "";
 
     while(ReadFile(_rpipe, &_buffer, sizeof(_buffer), &_bytes_read, NULL) && _bytes_read > 0)
     {
+        DWORD error = GetLastError();
+        if (error = ERROR_BROKEN_PIPE)
+        {
+            return "ERROR - broken pipe";
+            break;
+        }
         _out.append(_buffer, _bytes_read);
+
     }
 
     WaitForSingleObject(_pi.hProcess, INFINITE);
