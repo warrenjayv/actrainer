@@ -111,4 +111,53 @@ std::string piper::commandA(char* cmd)
     return result;
 }
 
+v2str piper::parseTasks( std::string in )
+{
+    v2str _v2;
+    std::string _v;
+    std::istringstream iss(in);
+    bool _getNxt = false;
+
+    while( iss >> _v )
+    {
+        if (_v.find(".exe") != std::string::npos)
+        {
+            _v2.a.push_back(_v);
+            _getNxt = true;
+            continue;
+        }
+
+        if ( _getNxt )
+        {
+            if (piper::is_numerical(_v) )
+            {
+                _v2.b.push_back(_v);
+            }
+
+            _getNxt = false;
+        }
+    }
+
+    return _v2;
+
+    /*
+    for( int i = 0; i < _a.size(); i++)
+    {
+      std::cout << _a[i] << " " << _b[i] << std::endl;
+    }
+    */
+
+}
+
+bool piper::is_numerical ( std::string in )
+{
+    for ( char c : in )
+    {
+        if (! isdigit(c))
+        {
+            return false;
+        }
+    }
+    return true;
+}
 

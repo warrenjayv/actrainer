@@ -23,7 +23,8 @@ HEADERS += \
     err.h \
     piper.h \
     process_handler.h \
-    sonar.h
+    sonar.h \
+    vstructs.h
 
 FORMS += \
     ac3.ui \

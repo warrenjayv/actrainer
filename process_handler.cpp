@@ -1,5 +1,6 @@
 #include "process_handler.h"
 #include "ui_process_handler.h"
+#include "piper.h"
 
 process_handler::process_handler(QWidget *parent)
     : QWidget(parent)
@@ -34,7 +35,15 @@ void process_handler::list_processes( )
         qInfo("list processes: %lx", _err);
         return;
     }
-    qInfo("list processes: %s", _list.c_str());
+    // qInfo("list processes: %s", _list.c_str());
+    v2str _v2 = piper::parseTasks( _list );
+
+    for( int i = 0; i < _v2.a.size( ); i++ )
+    {
+        qInfo("%s %s", _v2.a[i].c_str(), _v2.b[i].c_str());
+    }
+
+
 }
 
 void process_handler::list_processesA( )
