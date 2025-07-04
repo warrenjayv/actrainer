@@ -10,6 +10,7 @@
 #include <winnt.h>
 
 #include "piper.h"
+#include "qlistwidget.h"
 
 namespace Ui {
 class process_handler;
@@ -23,6 +24,8 @@ public:
     explicit process_handler(QWidget *parent = nullptr);
     ~process_handler();
 
+    int selectProcId = 0;
+
 signals:
     void ph_closed( );
     void send_console( QString msg );
@@ -32,6 +35,7 @@ public slots:
     void list_processes      ( );
     void list_processesA     ( );
     void get_process_modules ( );
+    void setprocID           ( QListWidgetItem* item );
 protected:
     void closeEvent(QCloseEvent *event);
 

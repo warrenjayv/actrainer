@@ -10,6 +10,7 @@ process_handler::process_handler(QWidget *parent)
     list_processes( );
     
     connect( ui->refreshBTN, &QPushButton::clicked, this, &process_handler::list_processes);
+    connect( ui->processLIST, &QListWidget::itemPressed, this, &process_handler::setprocID);
 }
 
 process_handler::~process_handler()
@@ -40,12 +41,21 @@ void process_handler::list_processes( )
     for( int i = 0; i < _v2.a.size( ); i++ )
     {
 
-        QString _l = tr((_v2.a[i] + " " + _v2.b[i]).c_str());
-        ui->processLIST->addItem(_l);
+        QString _ls = tr((_v2.a[i] + " " + _v2.b[i]).c_str());
+        ui->processLIST->addItem(_ls);
+
+        QListWidgetItem *item = new QListWidgetItem(_ls);
 
         // qInfo("%s %s", _v2.a[i].c_str(), _v2.b[i].c_str());
     }
 
+
+}
+
+void process_handler::setprocID (QListWidgetItem *item)
+{
+
+    qDebug() << item->text();
 
 }
 
