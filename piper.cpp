@@ -2,6 +2,16 @@
 
 piper::piper() {}
 
+char * piper::tchar_to_char( TCHAR* str )
+{
+    if (! str) { return nullptr; }
+
+    char* _c = new char[MAX_PATH];
+
+    WideCharToMultiByte(CP_ACP, 0, str, -1, _c, MAX_PATH, NULL, NULL);
+    return _c;
+}
+
 wchar_t * piper::chartowchar_t( char* cmd)
 {
     int _sz = MultiByteToWideChar(CP_ACP, 0, cmd, -1, NULL, 0);

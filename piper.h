@@ -20,6 +20,7 @@ public:
     static std::string command   ( char* cmd);
     static std::string commandA  ( char* cmd);
     static wchar_t *chartowchar_t( char* cmd);
+    static char *tchar_to_char(TCHAR* str);
     static v2str parseTasks  ( std::string in );
     static bool is_numerical ( std::string in );
 };
