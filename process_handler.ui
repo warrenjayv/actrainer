@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>211</width>
-    <height>425</height>
+    <width>783</width>
+    <height>489</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,83 +19,155 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(24, 6, 4);</string>
   </property>
-  <widget class="QLabel" name="title">
+  <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>101</width>
-     <height>16</height>
+     <width>761</width>
+     <height>461</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(135, 100, 98);</string>
+   <property name="currentIndex">
+    <number>0</number>
    </property>
-   <property name="text">
-    <string>process selector</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="attachBTN">
-   <property name="geometry">
-    <rect>
-     <x>146</x>
-     <y>390</y>
-     <width>51</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>attach</string>
-   </property>
-  </widget>
-  <widget class="QScrollArea" name="scrollArea">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>50</y>
-     <width>191</width>
-     <height>331</height>
-    </rect>
-   </property>
-   <property name="widgetResizable">
-    <bool>true</bool>
-   </property>
-   <widget class="QWidget" name="scrollAreaWidgetContents">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>189</width>
-      <height>329</height>
-     </rect>
-    </property>
-    <widget class="QListWidget" name="processLIST">
+   <widget class="QWidget" name="page1">
+    <attribute name="title">
+     <string>1</string>
+    </attribute>
+    <widget class="QPushButton" name="refreshBTN">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>191</width>
-       <height>341</height>
+       <x>170</x>
+       <y>20</y>
+       <width>34</width>
+       <height>34</height>
       </rect>
+     </property>
+     <property name="text">
+      <string>Я</string>
+     </property>
+     <property name="icon">
+      <iconset theme="application-exit"/>
+     </property>
+    </widget>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>191</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>189</width>
+        <height>329</height>
+       </rect>
+      </property>
+      <widget class="QListWidget" name="processLIST">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>191</width>
+         <height>341</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="title">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(135, 100, 98);</string>
+     </property>
+     <property name="text">
+      <string>process selector</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="attachBTN">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>400</y>
+       <width>51</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>attach</string>
+     </property>
+    </widget>
+    <widget class="QScrollArea" name="scrollArea_2">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>60</y>
+       <width>191</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>189</width>
+        <height>329</height>
+       </rect>
+      </property>
+      <widget class="QListWidget" name="moduleLIST">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>191</width>
+         <height>341</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="title_2">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>30</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(135, 100, 98);</string>
+     </property>
+     <property name="text">
+      <string>modules</string>
      </property>
     </widget>
    </widget>
-  </widget>
-  <widget class="QPushButton" name="refreshBTN">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>10</y>
-     <width>34</width>
-     <height>34</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Я</string>
-   </property>
-   <property name="icon">
-    <iconset theme="application-exit"/>
-   </property>
+   <widget class="QWidget" name="page2">
+    <attribute name="title">
+     <string>2</string>
+    </attribute>
+   </widget>
   </widget>
  </widget>
  <resources/>

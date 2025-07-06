@@ -40,16 +40,12 @@ void process_handler::list_processes( )
 
     for( int i = 0; i < _v2.a.size( ); i++ )
     {
-
         QString _ls = tr((_v2.a[i] + " " + _v2.b[i]).c_str());
         ui->processLIST->addItem(_ls);
 
         QListWidgetItem *item = new QListWidgetItem(_ls);
-
         // qInfo("%s %s", _v2.a[i].c_str(), _v2.b[i].c_str());
     }
-
-
 }
 
 void process_handler::setprocID (QListWidgetItem *item)
@@ -59,7 +55,6 @@ void process_handler::setprocID (QListWidgetItem *item)
     QString _s = item->text();
     QList<QString> _l = _s.split(" ");
     selectProcId = _l[1].toInt(&_safe);
-
 }
 
 void process_handler::list_processesA( )
@@ -113,11 +108,15 @@ void process_handler::get_process_modules( )
                         QString _qs = QString::fromLocal8Bit(_name);
                         ui->processLIST->addItem(_qs);
                     }
-
                 }
-
             }
         }
     }
 }
 
+void process_handler::attach_process ( )
+{
+    HANDLE _proc = OpenProcess( PROCESS_ALL_ACCESS, false, (DWORD) selectProcId );
+
+
+}

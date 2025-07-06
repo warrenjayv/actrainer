@@ -36,6 +36,7 @@ public slots:
     void list_processesA     ( );
     void get_process_modules ( );
     void setprocID           ( QListWidgetItem* item );
+    void attach_process      ( );
 protected:
     void closeEvent(QCloseEvent *event);
 
