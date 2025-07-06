@@ -116,7 +116,15 @@ void process_handler::get_process_modules( )
 
 void process_handler::attach_process ( )
 {
+    // [0] attach
     HANDLE _proc = OpenProcess( PROCESS_ALL_ACCESS, false, (DWORD) selectProcId );
+
+    if (_proc == NULL )
+    {
+        send_report("failed to attach process.");
+    }
+
+    // [1] get modules
 
 
 }

@@ -5,6 +5,10 @@
 #include <QWidget>
 #include <QWindow>
 
+#include <errhandlingapi.h>
+#include <minwindef.h>
+
+
 namespace Ui
 {
 class errs;
@@ -20,6 +24,7 @@ public:
     void report(QString msg);
     void ok( );
     void closeEvent(QCloseEvent *event);
+    DWORD get_last_error();
 signals:
     void send_report(QString msg);
 private:

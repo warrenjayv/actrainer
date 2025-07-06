@@ -11,7 +11,12 @@ errs::errs( QWidget *parent, QString msg) : QWidget(parent), ui(new Ui::errs)
 void errs::report( QString msg )
 {
     this->show();
-    ui->errLBL->setText(msg);
+
+    DWORD _err = GetLastError( );
+    std::string _e = "ERROR: ";
+    std::string _m = msg.toStdString() + _e + std::to_string(_err);
+
+    ui->errLBL->setText(_m.c_str());
 }
 
 void errs::closeEvent(QCloseEvent *event)
@@ -27,4 +32,9 @@ void errs::ok( )
 errs::~errs( )
 {
     delete ui;
+}
+
+DWORD errs::get_last_error( )
+{
+    return GetLastError( );
 }
