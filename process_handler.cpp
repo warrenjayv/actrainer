@@ -54,8 +54,11 @@ void process_handler::list_processes( )
 
 void process_handler::setprocID (QListWidgetItem *item)
 {
-
+    bool _safe = true;
     qDebug() << item->text();
+    QString _s = item->text();
+    QList<QString> _l = _s.split(" ");
+    selectProcId = _l[1].toInt(&_safe);
 
 }
 
