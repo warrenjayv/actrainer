@@ -9,8 +9,9 @@ process_handler::process_handler(QWidget *parent)
 
     list_processes( );
     
-    connect( ui->refreshBTN, &QPushButton::clicked, this, &process_handler::list_processes);
+    connect( ui->refreshBTN,  &QPushButton::clicked, this, &process_handler::list_processes);
     connect( ui->processLIST, &QListWidget::itemPressed, this, &process_handler::setprocID);
+    connect( ui->attachBTN,   &QPushButton::clicked, this, &process_handler::attach_process);
 }
 
 process_handler::~process_handler()
@@ -75,7 +76,48 @@ void process_handler::list_processesA( )
     qInfo("command: %s", _list.c_str());
 }
 
-void process_handler::get_process_modules( )
+void process_handler::get_process_modules( HANDLE _proc )
+{
+    HMODULE _hmod[1024];
+    MODULEINFO _info;
+    DWORD   _cmod;
+
+    if ( !EnumProcessModules(_proc, _hmod, sizeof(_hmod), &_cmod))
+    {
+        emit send_report("failed to obtain modules.");
+        return;
+    }
+
+    uint32_t len = _cmod / sizeof(_hmod);
+
+    for(uint32_t i = 0; i < len; i++)
+    {
+        TCHAR _name[MAX_PATH];
+        if ( !GetModuleFileNameEx(_proc, _hmod[i], _name, sizeof(_name)/sizeof(TCHAR)))
+        {
+            emit send_report("failed to obtain a module.");
+            continue;
+        }
+
+        if (GetModuleInformation(_proc, _hmod[i], &_info, sizeof(_info)))
+        {
+            QString _mm = piper::tchar_to_char(_name);
+
+            char _b[MAX_PATH]; sprintf(_b, "%s", _info.lpBaseOfDll);
+            QString _mn = tr(_b);
+
+            char _a[MAX_PATH]; sprintf(_a, "%x", _info.lpBaseOfDll);
+            QString _ma = tr(_a);
+
+            QString _out = _mm + " " + _mn + " " + _ma;
+
+            qDebug() << _out;
+
+        }
+    }
+}
+
+void process_handler::get_process_modulesA( )
 {
     DWORD _procids[1024];
     DWORD _cbn;
@@ -101,6 +143,10 @@ void process_handler::get_process_modules( )
 
                 if (! EnumProcessModules(_hproc, &_hmod, sizeof(_hmod), &_cmod))
                 {
+                    emit send_report("unable to enumerate process modules. ");
+                    return;
+                }
+
                     int _s = GetModuleBaseNameA(_hproc, _hmod, (LPSTR) &_name, sizeof(_name) );
 
                     if (_s > 0)
@@ -111,8 +157,8 @@ void process_handler::get_process_modules( )
                 }
             }
         }
-    }
 }
+
 
 void process_handler::attach_process ( )
 {
@@ -121,10 +167,11 @@ void process_handler::attach_process ( )
 
     if (_proc == NULL )
     {
-        send_report("failed to attach process.");
+        send_report("failed to attach process. ");
+        return;
     }
 
     // [1] get modules
-
+    get_process_modules( _proc );
 
 }

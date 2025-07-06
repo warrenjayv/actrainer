@@ -12,7 +12,7 @@ char * piper::tchar_to_char( TCHAR* str )
     return _c;
 }
 
-wchar_t * piper::chartowchar_t( char* cmd)
+wchar_t * piper::chartowchar_t( char* cmd )
 {
     int _sz = MultiByteToWideChar(CP_ACP, 0, cmd, -1, NULL, 0);
     if (_sz == 0)
