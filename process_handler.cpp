@@ -76,15 +76,15 @@ void process_handler::list_processesA( )
     qInfo("command: %s", _list.c_str());
 }
 
-void process_handler::get_process_modules( HANDLE _proc )
+void process_handler::get_process_modules( HANDLE *_proc )
 {
-    HMODULE _hmod[1024];
+    HMODULE _hmod[1024*4];
     MODULEINFO _info;
     DWORD   _cmod;
 
     if ( !EnumProcessModules(_proc, _hmod, sizeof(_hmod), &_cmod))
     {
-        emit send_report("failed to obtain modules.");
+        emit send_report("failed to obtain modules. ");
         return;
     }
 
@@ -93,9 +93,9 @@ void process_handler::get_process_modules( HANDLE _proc )
     for(uint32_t i = 0; i < len; i++)
     {
         TCHAR _name[MAX_PATH];
-        if ( !GetModuleFileNameEx(_proc, _hmod[i], _name, sizeof(_name)/sizeof(TCHAR)))
+        if (! GetModuleFileNameEx(_proc, _hmod[i], _name, sizeof(_name)/sizeof(TCHAR)))
         {
-            emit send_report("failed to obtain a module.");
+            emit send_report("failed to obtain a module. ");
             continue;
         }
 
@@ -163,15 +163,41 @@ void process_handler::get_process_modulesA( )
 void process_handler::attach_process ( )
 {
     // [0] attach
-    HANDLE _proc = OpenProcess( PROCESS_ALL_ACCESS, false, (DWORD) selectProcId );
+    HANDLE _proc = OpenProcess( PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, false, (DWORD) selectProcId );
 
+    qDebug() << "attach process...";
     if (_proc == NULL )
     {
-        send_report("failed to attach process. ");
+        emit send_report("failed to attach process. ");
         return;
     }
 
-    // [1] get modules
-    get_process_modules( _proc );
+    bool state = is_proc_64( &_proc );
 
+    qDebug() << "get modules...";
+    // [1] get modules
+    // zget_process_modules( &_proc );
+
+    CloseHandle(_proc);
+}
+
+bool process_handler::is_proc_64 ( HANDLE * _hproc )
+{
+    USHORT _pm, _nm;
+
+    if ( IsWow64Process2(_hproc, &_pm, &_nm))
+    {
+        if ( _pm == IMAGE_FILE_MACHINE_AMD64 || _pm == IMAGE_FILE_MACHINE_ARM64 )
+        {
+            emit send_console("process is a 64 bit");
+            return true;
+        }
+        emit send_console("process is a 32 bit");
+        return false;
+    }
+    else
+    {
+        emit send_report("wow 64 process failed ... ");
+        return false;
+    }
 }

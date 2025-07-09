@@ -34,10 +34,11 @@ signals:
 public slots:
     void list_processes      ( );
     void list_processesA     ( );
-    void get_process_modules  ( HANDLE _proc );
+    void get_process_modules  ( HANDLE *_proc );
     void get_process_modulesA ( );
     void setprocID           ( QListWidgetItem* item );
     void attach_process      ( );
+    bool is_proc_64 ( HANDLE * _hproc );
 protected:
     void closeEvent(QCloseEvent *event);
 
